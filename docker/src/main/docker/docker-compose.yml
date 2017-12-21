@@ -1,0 +1,19 @@
+version: '2'
+services:
+  web:
+    image: jinloes/spring-boot-docker-test
+    ports:
+     - "8080:8080"
+    depends_on:
+     - postgres
+     - consul
+  postgres:
+    image: postgres
+  consul:
+    image: progrium/consul
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "53:53/udp"
+    command: -server -bootstrap
+
