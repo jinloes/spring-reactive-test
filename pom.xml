@@ -10,6 +10,7 @@
   <modules>
     <module>webflux</module>
     <module>eureka</module>
+    <module>openapi</module>
   </modules>
 
   <properties>
