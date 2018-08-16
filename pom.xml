@@ -15,6 +15,7 @@
     <module>jpa-multitenancy</module>
     <module>elasticache-redis</module>
     <module>docker</module>
+    <module>cloud-contract</module>
   </modules>
 
   <properties>
