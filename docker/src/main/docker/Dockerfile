@@ -1,5 +1,10 @@
+# Select java version
 FROM openjdk:8-jdk-alpine
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/docker-1.0.jar"]
 VOLUME /tmp
-ADD ${JAR_FILE} app.jar
-RUN sh -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+# Copy jar file
+ARG JAR_FILE
+ADD ${JAR_FILE} /docker-1.0.jar
+RUN sh -c 'touch /docker-1.0.jar'
+
+EXPOSE 8080

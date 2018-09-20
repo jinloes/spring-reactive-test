@@ -1,0 +1,6 @@
+server:
+  servlet:
+    context-path: /docker-test
+
+test:
+  a: a value

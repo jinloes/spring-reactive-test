@@ -1,8 +1,11 @@
 build image
-docker build -t jinloes/spring-boot-docker-test ./build/docker/
+docker build -t jinloes/spring-boot-docker-test ./src/main/docker/
 
 or with gradle (better choice, also uploads the image)
 gradle build buildDocker
+
+or with maven
+mvn install
 
 push image
 docker push jinloes/spring-boot-docker-test
