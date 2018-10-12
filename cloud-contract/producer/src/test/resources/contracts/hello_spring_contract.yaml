@@ -2,7 +2,7 @@ description: get some data
 name: get data
 request:
   method: GET
-  url: /
+  url: /hello
 response:
   status: 200
   body:

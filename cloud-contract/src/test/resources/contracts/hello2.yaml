@@ -1,8 +1,0 @@
-paths:
-  /:
-    get:
-      summary: Get Data
-      x-contracts:
-        - contractId: 1
-          name: Should Get Data
-          priority: 1

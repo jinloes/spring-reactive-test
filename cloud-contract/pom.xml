@@ -6,7 +6,17 @@
 
   <groupId>com.jinloes</groupId>
   <artifactId>cloud-contract</artifactId>
-  <version>1.0</version>
+  <packaging>pom</packaging>
+  <version>${revision}</version>
+
+  <properties>
+    <revision>1.0.0-SNAPSHOT</revision>
+  </properties>
+
+  <modules>
+    <module>producer</module>
+    <module>consumer</module>
+  </modules>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -14,59 +24,4 @@
     <version>2.0.3.RELEASE</version>
     <relativePath/>
   </parent>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-contract-dependencies</artifactId>
-        <version>2.0.1.RELEASE</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.restdocs</groupId>
-      <artifactId>spring-restdocs-mockmvc</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-contract-verifier</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-        <version>2.0.1.RELEASE</version>
-        <extensions>true</extensions>
-        <configuration>
-          <baseClassForTests>com.jinloes.BaseTestClass</baseClassForTests>
-        </configuration>
-        <dependencies>
-          <!--needed to include oa3 converter-->
-          <dependency>
-            <groupId>guru.springframework</groupId>
-            <artifactId>spring-cloud-contract-oa3</artifactId>
-            <version>2.0.1</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-    </plugins>
-  </build>
 </project>
