@@ -15,3 +15,7 @@ docker run -p 8080:8080 -t jinloes/spring-boot-docker-test
 docker-compose up
 
 
+To Run: 
+docker-compose -f ./docker-compose.yml up
+
+
