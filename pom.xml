@@ -17,6 +17,7 @@
     <module>docker</module>
     <module>cloud-contract</module>
     <module>kafka</module>
+    <module>elasticsearch</module>
   </modules>
 
   <properties>
