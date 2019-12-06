@@ -19,6 +19,7 @@
     <module>kafka</module>
     <module>elasticsearch</module>
     <module>springdoc-openapi</module>
+    <module>react</module>
   </modules>
 
   <properties>
