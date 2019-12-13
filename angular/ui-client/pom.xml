@@ -5,11 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jinloes</groupId>
-    <artifactId>react</artifactId>
+    <artifactId>ui-client</artifactId>
     <version>1.0</version>
 
-    <modules>
-        <module>ui-client</module>
-    </modules>
     
 </project>

@@ -20,6 +20,8 @@
     <module>elasticsearch</module>
     <module>springdoc-openapi</module>
     <module>react</module>
+    <module>angular</module>
+    <module>oauth2</module>
   </modules>
 
   <properties>
