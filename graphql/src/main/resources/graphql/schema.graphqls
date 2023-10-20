@@ -1,0 +1,12 @@
+type Asset {
+    id: ID!
+    name: String!
+}
+
+type Query {
+    getAssets: [Asset]!
+}
+
+type Mutation {
+    createAsset(name: String!) : Asset!
+}
