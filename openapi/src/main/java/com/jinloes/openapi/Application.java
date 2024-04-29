@@ -1,7 +1,5 @@
 package com.jinloes.openapi;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
@@ -26,14 +24,14 @@ public class Application {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<Map<String, Object>>> getFoos() {
-      return ResponseEntity.<List<Map<String, Object>>>ok(Lists.<Map<String, Object>>newArrayList(
-          ImmutableMap.<String, Object>of("val1", "abc123", "val2", 123))
+      return ResponseEntity.<List<Map<String, Object>>>ok(List.<Map<String, Object>>of(
+          Map.<String, Object>of("val1", "abc123", "val2", 123))
       );
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Map<String, Object>> getFoos(@PathVariable("id") long id) {
-      return ResponseEntity.<Map<String, Object>>ok(ImmutableMap.<String, Object>of("val1", "abc123", "val2", 123));
+      return ResponseEntity.<Map<String, Object>>ok(Map.<String, Object>of("val1", "abc123", "val2", 123));
     }
   }
 }
