@@ -1,32 +1,30 @@
 package com.jinloes.openapi;
 
-import com.atlassian.oai.validator.restassured.SwaggerValidationFilter;
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.specification.RequestSpecification;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.context.embedded.LocalServerPort;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.MediaType;
-import org.springframework.restdocs.JUnitRestDocumentation;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import static io.restassured.RestAssured.given;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.document;
 import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.documentationConfiguration;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import com.atlassian.oai.validator.restassured.OpenApiValidationFilter;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
+import org.springframework.restdocs.RestDocumentationContextProvider;
+import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FooControllerTest {
-  @Rule
-  public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("target/generated-snippets");
-  private static final SwaggerValidationFilter VALIDATION_FILTER =
-      new SwaggerValidationFilter(new ClassPathResource("example.yaml").getPath());
+  private static final OpenApiValidationFilter VALIDATION_FILTER =
+      new OpenApiValidationFilter(new ClassPathResource("example.yaml").getPath());
   private RequestSpecification spec;
 
   @LocalServerPort
@@ -34,8 +32,8 @@ public class FooControllerTest {
     RestAssured.port = port;
   }
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  public void setUp(RestDocumentationContextProvider restDocumentation) {
     this.spec = new RequestSpecBuilder()
         .addFilter(VALIDATION_FILTER)
         .addFilter(documentationConfiguration(restDocumentation)

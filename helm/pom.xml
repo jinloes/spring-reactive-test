@@ -5,45 +5,42 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jinloes</groupId>
-    <artifactId>springdoc-openapi</artifactId>
+    <artifactId>helm</artifactId>
     <version>1.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.5</version>
+        <version>3.2.4</version>
         <relativePath/>
     </parent>
 
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>jcenter-releases</id>
-            <name>jcenter</name>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot-release.version>3.2.4</spring-boot-release.version>
+    </properties>
 
-    <!-- Add typical dependencies for a web application -->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.7.0</version>
-        </dependency>
     </dependencies>
 
-    <!-- Package as an executable jar -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-release.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -52,4 +49,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

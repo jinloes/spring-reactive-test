@@ -23,6 +23,9 @@
     <module>angular</module>
     <module>oauth2</module>
     <module>graphql</module>
+    <module>theta-sketch</module>
+    <module>pubsub</module>
+    <module>helm</module>
   </modules>
 
   <properties>
