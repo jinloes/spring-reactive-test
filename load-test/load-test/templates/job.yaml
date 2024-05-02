@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "load-test.fullname" . }}
+  labels:
+    {{- include "load-test.labels" . | nindent 4 }}
+spec:
+  completionMode: Indexed
+  template:
+    spec:
+      containers:
+        - name: gatling
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          workingDir: /tmp
+          command: [ "java", "-jar", "load-test.jar", "-s", "com.jinloes.load_test.HelloSimulation", "-rf","results" ]
+        #- name: pi
+        #  image: perl:5.34.0
+        #  command: [ "perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)" ]
+      restartPolicy: Never
+  backoffLimit: 1
