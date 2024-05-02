@@ -26,6 +26,7 @@
     <module>theta-sketch</module>
     <module>pubsub</module>
     <module>helm</module>
+    <module>load-test</module>
   </modules>
 
   <properties>
