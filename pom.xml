@@ -27,6 +27,7 @@
     <module>pubsub</module>
     <module>helm</module>
     <module>load-test</module>
+    <module>retry</module>
   </modules>
 
   <properties>
